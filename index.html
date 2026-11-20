@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ing To Rush: Gerund or Infinitive Game</title>
+<meta name="description" content="Ing To Rush is a fast English grammar game for Android. Sort falling verbs into gerund (-ing) or infinitive (to + verb) before time runs out.">
+<meta name="theme-color" content="#14122b">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="canonical" href="https://raustime.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ing To Rush: Gerund or Infinitive Game">
+<meta property="og:description" content="Sort falling verbs into -ing or to + infinitive before time runs out. Free on Google Play.">
+<meta property="og:url" content="https://raustime.github.io/">
+<meta property="og:image" content="https://raustime.github.io/img/feature.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@font-face{font-family:Fredoka;font-weight:500;font-display:swap;src:url(fonts/fredoka-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Fredoka;font-weight:700;font-display:swap;src:url(fonts/fredoka-latin-700-normal.woff2) format('woff2')}
+:root{--bg:#14122b;--bg2:#1b1840;--card:#211d4a;--line:#352f70;--fg:#f1efff;--mut:#b4b1de;--a:#3fd8f7;--b:#ff6aa8;--y:#ffc94a;--r:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:500 17px/1.55 Fredoka,ui-rounded,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--a)}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:700;line-height:1.15;margin:0}
+h2{font-size:clamp(28px,4vw,38px);margin-bottom:12px}
+.lead{color:var(--mut);font-size:clamp(17px,2vw,19px)}
+.k{display:inline-block;padding:1px 10px;border-radius:999px;font-weight:700;white-space:nowrap}
+.ka{background:color-mix(in srgb,var(--a) 18%,transparent);color:var(--a)}
+.kb{background:color-mix(in srgb,var(--b) 18%,transparent);color:var(--b)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:700;font-size:20px}
+.brand img{width:36px;height:36px;border-radius:10px}
+header nav{margin-left:auto;display:flex;gap:18px;align-items:center}
+header nav a{color:var(--mut);text-decoration:none;font-size:16px}
+header nav a:hover{color:var(--fg)}
+header nav .navplay{color:#0d1030;background:var(--a);padding:7px 14px;border-radius:999px;font-weight:700}
+header nav .navplay:hover{color:#0d1030;filter:brightness(1.08)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 0 64px}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;background:radial-gradient(40% 50% at 20% 30%,color-mix(in srgb,var(--a) 22%,transparent),transparent 70%),radial-gradient(40% 50% at 85% 20%,color-mix(in srgb,var(--b) 22%,transparent),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-icon{width:88px;height:88px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.4);margin-bottom:22px}
+.hero h1{font-size:clamp(38px,6vw,62px);letter-spacing:-.5px}
+.hero h1 .a{color:var(--a)}.hero h1 .b{color:var(--b)}
+.hero .lead{margin:18px 0 28px;max-width:34ch}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.play{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;text-decoration:none;border:1px solid #5f5f6b;border-radius:14px;padding:10px 20px 10px 16px;transition:transform .15s,box-shadow .15s}
+.play:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.play svg{width:30px;height:30px;flex:none}
+.play small{display:block;font-size:12px;letter-spacing:.5px;text-transform:uppercase;opacity:.85;line-height:1.1}
+.play b{display:block;font-size:21px;line-height:1.15}
+.facts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:20px;padding:0;list-style:none;color:var(--mut);font-size:15px}
+.facts li::before{content:"✓ ";color:var(--a);font-weight:700}
+
+/* phone */
+.phone{justify-self:center;width:min(340px,78vw);background:#0b0a1a;border:10px solid #2a2656;border-radius:38px;padding:26px 8px;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px #3d3880 inset;position:relative;transform:rotate(3deg)}
+.phone img{width:100%;height:auto;border-radius:14px}
+.chip{position:absolute;font-weight:700;padding:6px 14px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.35);font-size:17px;color:#0d1030;animation:float 4s ease-in-out infinite}
+.chip.c1{left:-58px;top:18%;background:var(--a)}
+.chip.c2{right:-52px;top:42%;background:var(--b);animation-delay:-1.3s}
+.chip.c3{left:-40px;bottom:16%;background:var(--y);animation-delay:-2.6s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(-3deg)}}
+@media (prefers-reduced-motion:reduce){.chip{animation:none}.play{transition:none}}
+
+/* sections */
+section{padding:64px 0}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.center{text-align:center}
+.center .lead{max-width:56ch;margin:0 auto}
+.feature{margin-top:34px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.card .n{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:20px;color:#0d1030;background:var(--a);margin-bottom:14px}
+.card:nth-child(2) .n{background:var(--b)}.card:nth-child(3) .n{background:var(--y)}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{margin:0;color:var(--mut)}
+
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.mode{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.mode h3{font-size:24px;margin-bottom:6px}
+.mode .tag{color:var(--mut);margin:0 0 16px}
+.ex{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.ex li{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.ex i{color:var(--mut)}
+
+.prog{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;text-align:center}
+.prog .card b{display:block;font-size:44px;line-height:1;margin-bottom:6px;color:var(--a)}
+.prog .card:nth-child(2) b{color:var(--b)}.prog .card:nth-child(3) b{color:var(--y)}
+
+.shots{display:flex;gap:22px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.shots figure{margin:0;width:min(300px,100%)}
+.shots img{border-radius:20px;border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.shots figcaption{color:var(--mut);text-align:center;margin-top:10px;font-size:15px}
+
+.final{text-align:center}
+.final .cta{justify-content:center;margin-top:24px}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mut);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+footer nav{display:flex;gap:20px;margin-left:auto}
+footer a{color:var(--mut)}footer a:hover{color:var(--fg)}
+
+@media (max-width:860px){
+  .hero{padding:36px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;text-align:center}
+  .hero .lead{margin-inline:auto}
+  .hero-icon{margin-inline:auto}
+  .cta,.facts{justify-content:center}
+  .phone{transform:none;margin-top:12px}
+  .chip.c1{left:-24px}.chip.c2{right:-22px}.chip.c3{left:-14px}
+  .grid3,.prog{grid-template-columns:1fr}
+  .modes{grid-template-columns:1fr}
+  header nav a:not(.navplay){display:none}
+  footer nav{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/icon.webp" alt="" width="36" height="36">Ing To Rush</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#modes">Modes</a>
+      <a href="ingtorush/">Privacy</a>
+      <a class="navplay" href="https://play.google.com/store/apps/details?id=ingtorush.app">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <img class="hero-icon" src="img/icon.webp" alt="Ing To Rush app icon" width="88" height="88">
+        <h1><span class="a">-ing</span> or <span class="b">to</span>?<br>Sort it before it lands.</h1>
+        <p class="lead">Ing To Rush is a fast arcade game that trains one of the trickiest parts of English grammar: which verbs take a gerund and which take an infinitive.</p>
+        <div class="cta">
+          <a class="play" href="https://play.google.com/store/apps/details?id=ingtorush.app" aria-label="Get it on Google Play">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4.5v23a1 1 0 0 0 1.5.86L27 17.7a1.98 1.98 0 0 0 0-3.4L8.5 3.64A1 1 0 0 0 7 4.5z" fill="#fff"/></svg>
+            <span><small>Get it on</small><b>Google Play</b></span>
+          </a>
+        </div>
+        <ul class="facts">
+          <li>Free</li><li>Works offline</li><li>140 verbs</li><li>Android 7.0+</li>
+        </ul>
+      </div>
+      <div class="phone">
+        <img src="img/shot-play.webp" alt="A round in progress: the verb “neglect” falls between the -ing and to + inf zones" width="677" height="952">
+        <span class="chip c1">enjoy</span>
+        <span class="chip c2">to learn</span>
+        <span class="chip c3">playing</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="how">
+    <div class="wrap center">
+      <h2>How it works</h2>
+      <p class="lead">A verb drops from the top of the screen. Decide which pattern follows it, then swipe or tap before it hits the bottom.</p>
+      <div class="grid3" style="text-align:left">
+        <div class="card"><div class="n">←</div><h3>Swipe left for -ing</h3><p>Verbs like <span class="k ka">enjoy</span> take a gerund: <i>enjoy swimming</i>, <i>avoid waiting</i>.</p></div>
+        <div class="card"><div class="n">→</div><h3>Swipe right for to + verb</h3><p>Verbs like <span class="k kb">want</span> take an infinitive: <i>want to swim</i>, <i>decide to stay</i>.</p></div>
+        <div class="card"><div class="n">⏱</div><h3>Beat the clock</h3><p>45 seconds and 3 lives. Combos add bonus points, and the words you miss come back more often.</p></div>
+      </div>
+      <img class="feature" src="img/feature.webp" alt="Ing To Rush: Gerund (-ing) versus Infinitive (to + verb). Learn English the fun way." width="1024" height="500" loading="lazy">
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="wrap center">
+      <h2>Two ways to play</h2>
+      <p class="lead">Start with the basics, then take on the verbs that change meaning.</p>
+      <div class="modes" style="text-align:left">
+        <div class="mode">
+          <h3>Classic</h3>
+          <p class="tag">Two choices: gerund or infinitive.</p>
+          <ul class="ex">
+            <li><span class="k ka">-ing</span> <i>I enjoy reading.</i></li>
+            <li><span class="k kb">to + verb</span> <i>She hopes to travel.</i></li>
+          </ul>
+        </div>
+        <div class="mode">
+          <h3>Four ways</h3>
+          <p class="tag">Harder verbs that take both forms.</p>
+          <ul class="ex">
+            <li><span class="k ka">↑ same meaning</span> <i>love swimming / love to swim</i></li>
+            <li><span class="k kb">↓ different meaning</span> <i>stop smoking / stop to smoke</i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap center">
+      <h2>Learn while you play</h2>
+      <p class="lead">Every round ends with a short review of your mistakes, with an example sentence for each verb.</p>
+      <div class="prog">
+        <div class="card"><b>3</b>correct answers in a row and a word counts as learned</div>
+        <div class="card"><b>104</b>core verbs to master</div>
+        <div class="card"><b>36</b>rare verbs unlock once most words are learned</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap center">
+      <h2>Screenshots</h2>
+      <div class="shots">
+        <figure><img src="img/shot-play.webp" alt="Gameplay: sort the falling verb" width="677" height="952" loading="lazy"><figcaption>Sort the falling verb</figcaption></figure>
+        <figure><img src="img/shot-menu.webp" alt="Main menu with best scores and learning progress" width="665" height="951" loading="lazy"><figcaption>Track scores and progress</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt final">
+    <div class="wrap">
+      <h2>Ready to rush?</h2>
+      <p class="lead">Free to play. Short rounds, real grammar.</p>
+      <div class="cta">
+        <a class="play" href="https://play.google.com/store/apps/details?id=ingtorush.app" aria-label="Get it on Google Play">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4.5v23a1 1 0 0 0 1.5.86L27 17.7a1.98 1.98 0 0 0 0-3.4L8.5 3.64A1 1 0 0 0 7 4.5z" fill="#fff"/></svg>
+          <span><small>Get it on</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ing To Rush</span>
+    <nav>
+      <a href="ingtorush/">Privacy Policy</a>
+      <a href="https://play.google.com/store/apps/details?id=ingtorush.app">Google Play</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
